@@ -1,4 +1,4 @@
-export interface Products {
+export class Products {
         _id:object
         reference:string
         designation:String

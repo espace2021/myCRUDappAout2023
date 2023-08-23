@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from  '@angular/platform-browser/animations';
 import { MatPaginatorModule } from  '@angular/material/paginator';
 import { MatSortModule } from  '@angular/material/sort';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     IndexComponent,
@@ -26,7 +27,9 @@ import { MatSortModule } from  '@angular/material/sort';
     MatTableModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ProductsModule { }

@@ -2,10 +2,10 @@
 
     <h2>Les produits</h2>
        
-        <a href="#" routerLink="/products/create/" class="btn btn-success">
-            <i class="bi bi-plus-circle-fill"></i>
-            Nouveau Produit
-        </a>
+    <div>
+      <app-create></app-create>
+    </div> 
+
         
         <div>
                 <input  matInput  (keyup)="filter($event)"  placeholder="Rechercher">

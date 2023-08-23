@@ -42,17 +42,12 @@ export class IndexComponent implements OnInit {
   }  
 
   deleteProduct(_id:object){
- 
-    this.productsService.delete(_id).subscribe(res => { 
-
-         this.products = this.products.filter((item: { _id: object; }) => item._id !== _id);
-
-         console.log('Post deleted successfully!');
-
-    })
-
+      this.productsService.delete(_id).subscribe(res => { 
+        console.log(res);
+        this.products = new MatTableDataSource<any>(this.products.filteredData.filter((item: { _id: object; }) => item._id !== _id))
+     })
+     this.products.paginator = this.paginator;
+     this.products.sort = this.sort;
   }
 
-    
-
-}
+ }
