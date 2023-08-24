@@ -4,6 +4,9 @@ import { Products } from '../products';
 import { ScategoriesService } from '../../scategories/scategories.service'
 import { Scategories } from '../../scategories/scategories'
 
+import { FilePondComponent } from 'ngx-filepond';
+
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -12,6 +15,8 @@ import { Scategories } from '../../scategories/scategories'
 export class CreateComponent implements OnInit {
 
   @ViewChild('myModal') myModal!: ElementRef;
+
+  @ViewChild('myPond') myPond: FilePondComponent;
 
   display = "none";
 
@@ -47,22 +52,53 @@ export class CreateComponent implements OnInit {
     this.display = "none";
   }
 
-  onFileChanged(event:any) {
+  pondOptions = {
+    class: 'my-filepond',
+    multiple: false,
+    labelIdle: 'Drop files here',
+    acceptedFileTypes: 'image/jpeg, image/png',
+    server: {
+      process: (fieldName:any, file:any, metadata:any, load:any, error:any, progress:any, abort:any) => {
+        
+        const data=new FormData();
       
-    const imageData=event.target.files[0]
-    const data=new FormData();
-  
-    data.append('file', imageData);
-    data.append('upload_preset', 'Ecommerce_cloudinary');
-    data.append('cloud_name', 'iset-sfax')
-    data.append('public_id', imageData.name)
-   
-      
-    this.prodserv.uploadSignature(data).subscribe((res) => {
-     
-      this.products.imageart = res.url;
+        data.append('file', file);
+        data.append('upload_preset', 'Ecommerce_cloudinary');
+        data.append('cloud_name', 'iset-sfax')
+        data.append('public_id', file.name)
     
-    })
+        this.prodserv
+        .uploadSignature(data)
+        .subscribe({
+          next: (res) => {
+           this.products.imageart = res.url;
+           load(res);
+          },
+          error: (e) => {
+            console.log(e);
+            error(e);
+            return () => {
+              abort();
+            };
+          },
+          complete: () => {
+          console.log('done');
+          return () => {
+            abort();
+          };
+           }
+           
+        })
+        
+        },
+        revert: (uniqueFileId:any, load:any, error:any) => {
+                error('Error');
+                load();
+      },
+ 
+    }
   }
-  
+
+
+    
 }

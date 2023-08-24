@@ -16,6 +16,16 @@ import { MatSortModule } from  '@angular/material/sort';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {CloudinaryModule} from '@cloudinary/ng';
+
+import { FilePondModule, registerPlugin } from 'ngx-filepond';
+
+// import and register filepond file type validation plugin
+import  * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+import  * as FilepondPluginImageEdit from 'filepond-plugin-image-edit';
+import  * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
+registerPlugin(FilePondPluginFileValidateType,FilepondPluginImageEdit,FilepondPluginImagePreview);
+
+
 @NgModule({
   declarations: [
     IndexComponent,
@@ -32,7 +42,8 @@ import {CloudinaryModule} from '@cloudinary/ng';
     MatSortModule,
     FormsModule,
     ReactiveFormsModule,
-    CloudinaryModule
+    CloudinaryModule,
+    FilePondModule
   ]
 })
 export class ProductsModule { }

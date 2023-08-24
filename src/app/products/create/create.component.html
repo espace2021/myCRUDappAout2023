@@ -48,13 +48,14 @@
             <input type="text" class="form-control" id="marque"  name = "marque" placeholder="Marque" [(ngModel)]="products.marque" >
           </div>
 
-          <div class="mb-3">
-            <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
-            <button type="button" (click)="fileInput.click()">Selectionner image</button>
-            <input type="text" readonly class="form-control" id="imageart" name="imageart" [(ngModel)]="products.imageart" >
-            <div *ngIf="products.imageart!=null"> <img src="{{products.imageart}}" width="150" height="150"/></div>
+          <div>
+              <file-pond #myPond 
+                  [options]="pondOptions" 
+              >
+              </file-pond>
+       
           </div>
- 
+
           <div class="mb-3">
           Catégories :    <select name="scategorieID" class="form-control" [(ngModel)]="products.scategorieID" >
                       <option *ngFor="let sd of scategories" value="{{sd._id}}">
@@ -72,3 +73,4 @@
         </form>
 
 </ng-template>
+
