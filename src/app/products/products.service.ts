@@ -216,4 +216,10 @@ export class ProductsService {
 
  }
 
+ uploadSignature(vals: any): Observable<any>{ 
+  let data = vals;
+  return this.httpClient.post('https://api.cloudinary.com/v1_1/iset-sfax/image/upload',data)
+}
+
+
 }

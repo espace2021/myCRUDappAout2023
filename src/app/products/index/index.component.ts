@@ -44,10 +44,12 @@ export class IndexComponent implements OnInit {
   deleteProduct(_id:object){
       this.productsService.delete(_id).subscribe(res => { 
         console.log(res);
-        this.products = new MatTableDataSource<any>(this.products.filteredData.filter((item: { _id: object; }) => item._id !== _id))
+        const data = this.products.filteredData.filter((item: { _id: object; }) => item._id !== _id)
+        this.products = new MatTableDataSource<any>(data)
+        this.products.paginator = this.paginator;
+        this.products.sort = this.sort;
      })
-     this.products.paginator = this.paginator;
-     this.products.sort = this.sort;
+   
   }
 
  }

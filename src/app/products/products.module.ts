@@ -14,6 +14,8 @@ import { MatPaginatorModule } from  '@angular/material/paginator';
 import { MatSortModule } from  '@angular/material/sort';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import {CloudinaryModule} from '@cloudinary/ng';
 @NgModule({
   declarations: [
     IndexComponent,
@@ -29,7 +31,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatSortModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CloudinaryModule
   ]
 })
 export class ProductsModule { }
