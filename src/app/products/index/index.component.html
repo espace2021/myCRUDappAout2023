@@ -33,14 +33,11 @@
             <ng-container matColumnDef="_id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header >Action</th>
                 <td mat-cell *matCellDef="let t">
-                    <a href="#" [routerLink]="['/products/', t._id, 'view']" class="btn btn-default">
-                        <i class="bi bi-info-square-fill"></i>
-                      </a>
+                 
+                    <app-view [productId]="t._id"></app-view>
     
-                      <a href="#" [routerLink]="['/products/', t._id, 'edit']" class="btn btn-default">
-                        <i class="bi bi-pencil-square" style="color:blue"></i>
-                      </a>
-    
+                    <app-edit [productId]="t._id"></app-edit>
+
                       <button type="button" (click)=" deleteProduct(t._id)" class="btn btn-default">
                         <i class="bi bi-trash-fill" style="color:red"></i>
                       </button>
