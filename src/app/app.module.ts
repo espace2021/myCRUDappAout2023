@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ProductsModule } from './products/products.module';
 
+import { AuthentificationModule } from './authentification/authentification.module'; 
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { ProductsModule } from './products/products.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ProductsModule
+    ProductsModule,
+    AuthentificationModule
    ],
   providers: [],
   bootstrap: [AppComponent]
