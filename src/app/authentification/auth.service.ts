@@ -14,13 +14,14 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  endpoint: string = 'https://backend-vetements-2023.vercel.app/api';
+endpoint: string = 'https://backend-commerce-2023-jwt.vercel.app/api';
+//endpoint: string = 'http://localhost:3001/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
   constructor(private http: HttpClient, public router: Router) {}
   // Sign-up
   signUp(user: User): Observable<any> {
-    let api = `${this.endpoint}/users`;
+    let api = `${this.endpoint}/users/register/`;
     return this.http.post(api, user).pipe(catchError(this.handleError));
   }
   // Sign-in
@@ -29,9 +30,9 @@ export class AuthService {
       .post<any>(`${this.endpoint}/users/login`, user)
       .subscribe({
           next: (res:any) => {
-            localStorage.setItem('access_token', res.accessToken);
-            console.log(localStorage.getItem('access_token'))
-          },
+            localStorage.setItem('access_token', res.token);
+            localStorage.setItem('refresh_token', res.refreshToken);
+                 },
           error: (e:any) => {
             console.log(e);
             alert("Error !")
@@ -50,6 +51,7 @@ export class AuthService {
   }
   doLogout() {
     let removeToken = localStorage.removeItem('access_token');
+     localStorage.removeItem('refresh_token');
     if (removeToken == null) {
       this.router.navigate(['log-in']);
     }
@@ -67,4 +69,22 @@ export class AuthService {
     }
     return throwError(msg);
   }
+
+
+  //refresh
+
+refreshToken(token: string) {
+
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  
+  return this.http.post(`${this.endpoint}/users/refreshToken/`, {
+    refreshToken: token
+  }, httpOptions);
 }
+
+
+}
+
+
