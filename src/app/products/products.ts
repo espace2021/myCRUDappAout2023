@@ -1,7 +1,7 @@
 export class Products {
         _id:object
         reference:string
-        designation:String
+        designation:string
         imageart:any
         marque:string
         prix:number

@@ -8,9 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ProductsModule } from './products/products.module';
 
-import { AuthentificationModule } from './authentification/authentification.module'; 
+import { AuthentificationModule } from './authentification/authentification.module';
 
-
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +20,8 @@ import { AuthentificationModule } from './authentification/authentification.modu
     AppRoutingModule,
     HttpClientModule,
     ProductsModule,
-    AuthentificationModule
+    AuthentificationModule,
+    ShoppingCartModule
    ],
   providers: [],
   bootstrap: [AppComponent]
