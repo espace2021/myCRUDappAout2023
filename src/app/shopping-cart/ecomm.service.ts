@@ -8,7 +8,8 @@ import {  Observable } from 'rxjs';
 
 export class EcommService {
 
-  private apiURL = "http://localhost:3001/api";
+  private apiURL = "https://backend-ecommerce-jwt-2024.vercel.app/api";
+  
   
   httpOptions = {
 
@@ -25,7 +26,6 @@ export class EcommService {
   sendPayment(data:any): Observable<any> {
   
     return this.httpClient.post(this.apiURL + '/payment/', JSON.stringify(data), this.httpOptions)
-
 
   } 
 }

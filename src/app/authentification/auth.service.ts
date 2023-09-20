@@ -14,8 +14,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-endpoint: string = 'https://backend-commerce-2023-jwt.vercel.app/api';
-//endpoint: string = 'http://localhost:3001/api';
+endpoint: string = 'https://backend-ecommerce-jwt-2024.vercel.app/api';
+
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
   constructor(private http: HttpClient, public router: Router) {}
