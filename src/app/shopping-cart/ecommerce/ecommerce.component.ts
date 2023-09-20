@@ -22,8 +22,14 @@ export class EcommerceComponent {
         this.collapsed = !this.collapsed;
     }
 
-    finishOrder(orderFinished: any) {
+    finishOrder(orderFinished: any) { 
         this.orderFinished = orderFinished;
+        if (this.orderFinished===false){
+        this.productAdded.map((p)=>{
+              p.quantity=0;
+        })
+             this.productAdded =[]
+            }
     }
 
     reset() {

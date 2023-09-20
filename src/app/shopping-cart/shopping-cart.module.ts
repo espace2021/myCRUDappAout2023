@@ -7,6 +7,7 @@ import { CardsComponent } from './cards/cards.component';
 import { PanierComponent } from './panier/panier.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     EcommerceComponent,
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ShoppingCartRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class ShoppingCartModule { }
