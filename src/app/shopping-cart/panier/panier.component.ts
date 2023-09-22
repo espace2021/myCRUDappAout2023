@@ -1,5 +1,9 @@
-import { Component,EventEmitter,Input, OnInit, Output} from '@angular/core';
+import { Component,ElementRef,EventEmitter,Input, OnInit, Output, ViewChild} from '@angular/core';
 import { EcommService } from '../ecomm.service';
+
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 @Component({
   selector: 'app-panier',
   templateUrl: './panier.component.html',
@@ -144,7 +148,10 @@ processPayment(amount:any,stripeToken:any){
     next: (res:any) => {
       console.log(res)
       alert("Operation sucessfully done")
-          
+       
+      //imprimer
+      this.openPDF()
+
             //signaler au composant ecommerce que la commande est finie
             this.onOrderFinished.emit(false);
 
@@ -158,4 +165,26 @@ processPayment(amount:any,stripeToken:any){
   });
 }
 
+ /*------------------------------------------
+
+  --------------------------------------------
+Imprimer PDF
+  --------------------------------------------
+
+  --------------------------------------------*/
+
+@ViewChild('htmlData') htmlData!: ElementRef;
+
+openPDF(){ 
+  let DATA: any = document.getElementById('htmlData');
+  html2canvas(DATA).then((canvas) => {
+    let fileWidth = 100;
+    let fileHeight = (canvas.height * fileWidth) / canvas.width;
+    const FILEURI = canvas.toDataURL('image/png');
+    let PDF = new jsPDF('p', 'mm', 'a4');
+    let position = 20;
+    PDF.addImage(FILEURI, 'PNG', 50, position, fileWidth, fileHeight);
+    PDF.save('cart.pdf');
+  });
+}
 }

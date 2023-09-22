@@ -11,6 +11,8 @@ import { ProductsModule } from './products/products.module';
 import { AuthentificationModule } from './authentification/authentification.module';
 
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
+
+
 @NgModule({
   declarations: [
     AppComponent

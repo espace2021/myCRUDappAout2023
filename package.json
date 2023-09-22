@@ -28,6 +28,7 @@
     "filepond-plugin-file-validate-type": "^1.2.8",
     "filepond-plugin-image-edit": "^1.6.3",
     "filepond-plugin-image-preview": "^4.6.11",
+    "jspdf": "^2.5.1",
     "ngx-filepond": "^7.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
