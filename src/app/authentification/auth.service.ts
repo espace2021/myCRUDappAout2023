@@ -45,16 +45,27 @@ endpoint: string = 'https://backend-ecommerce-jwt-2024.vercel.app/api';
   getToken() {
     return localStorage.getItem('access_token');
   }
-  get isLoggedIn(): boolean {
+  
+  /*get isLoggedIn(): boolean {
     let authToken = localStorage.getItem('access_token');
     return authToken !== null ? true : false;
+  }*/
+
+  isLoggedIn(): boolean {
+    let authToken = localStorage.getItem('access_token');
+    return authToken !== null;
   }
+  
+
+
   doLogout() {
     let removeToken = localStorage.removeItem('access_token');
      localStorage.removeItem('refresh_token');
-    if (removeToken == null) {
+     console.log(removeToken);
+
+   // if (removeToken === null) {
       this.router.navigate(['log-in']);
-    }
+    //}
   }
   
   // Error

@@ -3,11 +3,11 @@
     <a 
     class="btn btn-light text-dark me-2"
     routerLink="/ecommerce">
-    E-commerce Space
+    E-commerce Space {{this.authService.isLoggedIn()}}
    </a>
-   <a *ngIf="this.authService.isLoggedIn" class="p-2 text-dark" routerLink="/products">Liste des Produits</a>
+   <a *ngIf="this.authService.isLoggedIn()" class="p-2 text-dark" routerLink="/products">Liste des Produits</a>
       <a
-        *ngIf="!this.authService.isLoggedIn"
+        *ngIf="!this.authService.isLoggedIn()"
         class="btn btn-light text-dark me-2"
         routerLinkActive="active"
         routerLink="/log-in">Sign in</a
@@ -15,7 +15,7 @@
     </nav>
     <button
       (click)="logout()"
-      *ngIf="this.authService.isLoggedIn"
+      *ngIf="this.authService.isLoggedIn()"
       type="button"
       class="btn btn-default">
       Logout
